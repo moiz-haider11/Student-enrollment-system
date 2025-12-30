@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Course System</title>
+  <style>
+    body { font-family: sans-serif; background: #f0f2f5; padding: 20px; display: flex; justify-content: center; }
+    .container { width: 100%; max-width: 600px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    
+    input, button { width: 100%; padding: 10px; margin: 5px 0; box-sizing: border-box; }
+    button { cursor: pointer; border: none; border-radius: 5px; color: white; font-weight: bold; }
+    
+    .btn-login { background: #007bff; }
+    .btn-logout { background: #6c757d; width: auto; float: right; padding: 5px 15px; }
+    .btn-edit { background: orange; width: auto; padding: 5px 10px; }
+    .btn-delete { background: #dc3545; width: auto; padding: 5px 10px; }
+    .btn-enroll { background: #28a745; width: auto; padding: 5px 10px; }
+    
+    ul { list-style: none; padding: 0; }
+    li { background: #fff; border-bottom: 1px solid #eee; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <div id="login-section">
+      <h2 style="text-align: center;">🔐 System Login</h2>
+      <input type="email" id="loginEmail" placeholder="Email (e.g. admin@test.com)">
+      <input type="password" id="loginPass" placeholder="Password">
+      <button onclick="login()" class="btn-login">Login</button>
+      <p style="font-size: 12px; color: gray; text-align: center;">
+        Use <b>admin@test.com / admin123</b> for Admin<br>
+        Use <b>ali@test.com / 12345</b> for Student
+      </p>
+    </div>
+
+    <div id="dashboard-section" style="display: none;">
+      <div style="overflow: hidden; margin-bottom: 20px;">
+        <h2 style="float: left; margin: 0;">🎓 Dashboard</h2>
+        <button onclick="logout()" class="btn-logout">Logout</button>
+      </div>
+      
+      <p id="welcome-msg" style="color: #007bff; font-weight: bold;"></p>
+
+      <hr>
+
+      <div id="admin-controls" style="display: none; background: #e9ecef; padding: 15px; border-radius: 5px;">
+        <h3>➕ Manage Courses</h3>
+        <input type="text" id="courseTitle" placeholder="Course Title">
+        <input type="text" id="courseDesc" placeholder="Description">
+        <input type="number" id="courseCredit" placeholder="Credits">
+        <button id="addBtn" onclick="addCourse()" style="background: #28a745;">Add Course</button>
+      </div>
+
+      <div id="student-controls" style="display: none;">
+        <h3>📚 My Enrolled Courses</h3>
+        <ul id="my-enrollments" style="background: #f8f9fa; border: 1px solid #ddd;"></ul>
+      </div>
+
+      <h3>🏫 Available Courses</h3>
+      <ul id="course-list"></ul>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
